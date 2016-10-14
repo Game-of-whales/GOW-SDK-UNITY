@@ -11,6 +11,9 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.2**
+* Custom IStoreListener to Gow.Init method was added which made easier integration if you are already using UnityPurchasing service
+
 **1.0.1**
 * Added iOS Support
 
