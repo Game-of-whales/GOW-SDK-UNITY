@@ -2,7 +2,7 @@
 Game Of Whales Unity SDK.
 
 <p align=center>
-<img src=https://github.com/Game-of-whales/GOW-SDK-UNITY/blob/master/docs/gow_logo.png>
+<img src=http://gameofwhales.com/static/images/logo-whale.png>
 </p>
 
 Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki).
