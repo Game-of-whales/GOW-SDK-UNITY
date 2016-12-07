@@ -14,6 +14,7 @@ Changelog
 **1.0.3**
 * Integration process was improved.
 * Fixed incorrect display of game's android notification icon for push notifications on players' devices.
+* Minor bugs fixed.
 
 **1.0.2**
 * Custom IStoreListener to Gow.Init method was added which made easier integration if you are already using In-App Purchasing service
