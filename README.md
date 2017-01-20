@@ -11,6 +11,12 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.4**
+* Notifications' sound was added.
+* _Unity Cloud Build_ is supported.
+* Fixed bug: game settings wasn't saved in the Unity project. 
+* Minor bugs fixed.
+
 **1.0.3**
 * Integration process was improved.
 * Fixed incorrect display of game's android notification icon for push notifications on players' devices.
