@@ -11,6 +11,9 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.5**
+* Minor bugs fixed.
+
 **1.0.4**
 * Notifications' sound was added.
 * _Unity Cloud Build_ is supported.
