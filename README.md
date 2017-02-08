@@ -11,6 +11,9 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.7**
+* [Notifications events] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) were changed.
+
 **1.0.6**
 * [Postponed subscription] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) to push notification is supported.
 
