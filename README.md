@@ -11,6 +11,9 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.8**
+* Compatible fix for 5.4 or less versions of _Unity 5_.
+
 **1.0.7**
 * [Notifications events] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) were changed.
 
