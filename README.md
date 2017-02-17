@@ -11,6 +11,10 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.9**
+* _Gow.Init_ method without parameters is supported.
+* Fixed bug: there were some problems, if device's advertisement info was empty. 
+
 **1.0.8**
 * Compatible fix for 5.4 or less versions of _Unity 5_.
 
