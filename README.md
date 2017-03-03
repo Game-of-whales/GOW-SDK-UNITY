@@ -11,8 +11,12 @@ Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/
 
 Changelog
 ---------
+**1.0.10**
+* Fixed bug: sdk had not worked with other plugins that use push notifications.
+* Minor bugs were fixed.
+
 **1.0.9**
-* _Gow.Init_ method without parameters is supported.
+* [_Gow.Init_ method] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Init) without parameters is supported.
 * Fixed bug: there were some problems, if device's advertisement info was empty. 
 
 **1.0.8**
