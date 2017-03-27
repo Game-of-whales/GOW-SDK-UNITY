@@ -11,6 +11,10 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**1.0.11**
+* Fixed bug: if SDK could not get the player's device's advertising ID, system could use non-unique user identifier for the player.
+* Minor bugs were fixed.
+
 **1.0.10**
 * Fixed bug: sdk had not worked with other plugins that use push notifications.
 * Minor bugs were fixed.
