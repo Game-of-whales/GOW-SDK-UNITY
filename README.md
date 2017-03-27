@@ -5,7 +5,7 @@ Game Of Whales Unity SDK.
 <img src=http://gameofwhales.com/static/images/landing/logo-right.png>
 </p>
 
-Documentation is in the [wiki] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki).
+Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki).
 > :information_source:<br>
 > Currently, Unity SDK can only be used with Unity IAP Services
 
@@ -16,17 +16,17 @@ Changelog
 * Minor bugs were fixed.
 
 **1.0.9**
-* [_Gow.Init_ method] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Init) without parameters is supported.
+* [_Gow.Init_ method](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Init) without parameters is supported.
 * Fixed bug: there were some problems, if device's advertisement info was empty. 
 
 **1.0.8**
 * Compatible fix for 5.4 or less versions of _Unity 5_.
 
 **1.0.7**
-* [Notifications events] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) were changed.
+* [Notifications events](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) were changed.
 
 **1.0.6**
-* [Postponed subscription] (https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) to push notification is supported.
+* [Postponed subscription](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/Subscribe-to-push-notifications) to push notification is supported.
 
 **1.0.5**
 * Minor bugs fixed.
