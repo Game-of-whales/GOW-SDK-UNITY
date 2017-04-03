@@ -11,6 +11,9 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**1.0.12**
+* Compatible fix for previous versions of _Unity 5_.
+
 **1.0.11**
 * Fixed bug: if SDK could not get the player's device's advertising ID, system could use non-unique user identifier for the player.
 * Minor bugs were fixed.
