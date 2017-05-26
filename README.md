@@ -11,6 +11,9 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**1.0.13**
+* Full sdk redesing: basic sdk methods were changed.
+
 **1.0.12**
 * Compatible fix for previous versions of _Unity 5_.
 
