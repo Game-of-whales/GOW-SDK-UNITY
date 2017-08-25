@@ -11,6 +11,9 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**2.0.6**
+* New sdk redesing.
+
 **1.0.14**
 * Minor bugs were fixed.
 
