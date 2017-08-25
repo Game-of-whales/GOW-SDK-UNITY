@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../Game Of Whales Unity SDK/Assets/GameOfWhales/Utils/MiniJSON.cs">
+    <Files>
+      <File FileName="../../Game Of Whales Unity SDK/Assets/GameOfWhales/Utils/MiniJSON.cs" Line="29" Column="1" />
+      <File FileName="../../Game Of Whales Unity SDK/Assets/GameOfWhales/GameOfWhales.cs" Line="1" Column="1" />
+      <File FileName="../../Game Of Whales Unity SDK/Assets/GameOfWhales/Native/GameOfWhalesAndroid.cs" Line="1" Column="1" />
+      <File FileName="Assets/Example/Errors.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

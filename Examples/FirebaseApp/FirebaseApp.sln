@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseApp", "Assembly-CSharp.csproj", "{01818D50-7199-40B3-7696-AA50EC5CA8FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseApp", "Assembly-CSharp-Editor.csproj", "{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01818D50-7199-40B3-7696-AA50EC5CA8FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01818D50-7199-40B3-7696-AA50EC5CA8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01818D50-7199-40B3-7696-AA50EC5CA8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01818D50-7199-40B3-7696-AA50EC5CA8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
