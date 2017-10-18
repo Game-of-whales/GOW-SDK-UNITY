@@ -2,11 +2,10 @@
 Game Of Whales Unity SDK.
 
 <p align=center>
-<img src=http://gameofwhales.com/static/images/landing/logo-right.png>
+<img src=http://www.gameofwhales.com/sites/default/files/logo.png>
 </p>
 
 Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki).
-> :information_source:<br>
 > Currently, Unity SDK can only be used with Unity IAP Services
 
 Changelog
