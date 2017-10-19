@@ -10,6 +10,12 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**2.0.7**
+FIXED for iOS:
+* bug with _OnPushDelivered_ callback for empty push notification campaign.
+* bug with redeemable once special offer: they could be used many times.
+
+
 **2.0.6**
 * New sdk redesign.
 
