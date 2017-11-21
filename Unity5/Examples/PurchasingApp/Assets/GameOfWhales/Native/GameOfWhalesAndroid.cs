@@ -20,7 +20,7 @@ public class GameOfWhalesAndroid : GameOfWhales {
         using(var pluginClass = new AndroidJavaClass("com.gameofwhales.unityplugin.GameOfWhalesProxy"))
 			{
 				gameofwhales = pluginClass.CallStatic<AndroidJavaObject>("instance");
-                pluginClass.CallStatic("initialize", settings.gameID, settings.androidProjectID, this.gameObject.name, VERSION, settings.debugLogging);
+                pluginClass.CallStatic("initialize", settings.gameID, GameOfWhales.store, settings.androidProjectID, this.gameObject.name, VERSION, settings.debugLogging);
 			}
 		
 	}

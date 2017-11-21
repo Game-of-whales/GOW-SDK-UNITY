@@ -13,7 +13,7 @@ public class GowExample : MonoBehaviour {
 	void Start () {
 
         //GameOfWhales Initialization, must be called before any call of sdk
-        GameOfWhales.Init();
+        GameOfWhales.Init(GameOfWhales.GetCurrentStore());
         GameOfWhales.Instance.RegisterForNotifications();
         GameOfWhales.Instance.OnPushDelivered += OnPushDelivired;
 	}
