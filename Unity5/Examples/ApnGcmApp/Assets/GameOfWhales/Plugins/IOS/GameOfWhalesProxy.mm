@@ -26,6 +26,10 @@ static NSString * gw_listenerName = nil;
     [[NSNotificationCenter defaultCenter] addObserver:gw_proxyInstance selector:
      @selector(didRegisterForRemoteNotificationsWithDeviceToken:)
                                                  name:kUnityDidRegisterForRemoteNotificationsWithDeviceToken object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:gw_proxyInstance selector:
+     @selector(didReceiveRemoteNotification:)
+                                                 name:kUnityDidReceiveRemoteNotification object: nil];
 }
 
 -(id)init
@@ -35,6 +39,18 @@ static NSString * gw_listenerName = nil;
         
     }
     return self;
+}
+
+
+- (void)didReceiveRemoteNotification:(NSNotification*)notification;
+{
+    NSLog(@"PROXY didReceiveRemoteNotification %@", notification);
+    
+    if (notification)
+    {
+        UIApplication * application = [UIApplication sharedApplication];    
+        [[GW shared] receivedRemoteNotification:[notification userInfo] withApplication:application fetchCompletionHandler:nil];
+    }
 }
 
 - (void)unitySendMethod:(NSString*)method param:(NSDictionary<NSString*, id>*)param{
@@ -81,13 +97,13 @@ static NSString * gw_listenerName = nil;
 
 - (void)specialOfferAppeared:(GWSpecialOffer *)specialOffer
 {
-//    NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:10];
-//    [dict setValue: specialOffer.campaign forKey:@"camp" ];
-//    [dict setValue: specialOffer.product forKey:@"product" ];
-//    [dict setValue:@(specialOffer.countFactor) forKey:@"countFactor"];
-//    [dict setValue:@(specialOffer.priceFactor) forKey:@"priceFactor"];
-//    [dict setValue:[NSNumber numberWithLong:(long) ([specialOffer.finishedAt timeIntervalSince1970] * 1000)] forKey:@"finishedAt"];
-//    
+    //    NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:10];
+    //    [dict setValue: specialOffer.campaign forKey:@"camp" ];
+    //    [dict setValue: specialOffer.product forKey:@"product" ];
+    //    [dict setValue:@(specialOffer.countFactor) forKey:@"countFactor"];
+    //    [dict setValue:@(specialOffer.priceFactor) forKey:@"priceFactor"];
+    //    [dict setValue:[NSNumber numberWithLong:(long) ([specialOffer.finishedAt timeIntervalSince1970] * 1000)] forKey:@"finishedAt"];
+    //
     NSDictionary* dict = @{
                            @"camp":specialOffer.campaign,
                            @"product":specialOffer.product,

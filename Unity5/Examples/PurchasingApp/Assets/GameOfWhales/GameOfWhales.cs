@@ -2,7 +2,7 @@
 using UnityEngine;
 using JsonUtils = GameOfWhalesJson.MiniJSON;
 
-#if UNITY_PURCHASING
+#if UNITY_PURCHASING && UNITY_5_6_OR_NEWER
 using UnityEngine.Purchasing;
 #endif
 
@@ -20,7 +20,7 @@ using GameOfWhalesType = GameOfWhales;
 
 public class GameOfWhales : MonoBehaviour {
 
-    public const string VERSION = "2.0.8";
+    public const string VERSION = "2.0.9";
 
     private int maxErrorCount = 10;
     private int errorCount = 0;

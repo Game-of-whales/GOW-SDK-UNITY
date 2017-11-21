@@ -12,7 +12,13 @@ public class Example : MonoBehaviour {
 
 	void Start () 
     {
-        GameOfWhales.Init();
+#if UNITY_IOS
+        string store = GameOfWhales.STORE_APPLEAPPSTORE;
+#else
+        string store = GameOfWhales.STORE_GOOGLEPLAY;
+#endif
+
+        GameOfWhales.Init(store);
         GameOfWhales.Instance.RegisterForNotifications();
 
         GameOfWhales.Instance.OnPushDelivered += OnPush;

@@ -10,6 +10,17 @@ public class Example : MonoBehaviour {
     public Text messsage;
     public Text campaignID;
 
+    void Awake()
+    {
+#if UNITY_IOS
+        string store = GameOfWhales.STORE_APPLEAPPSTORE;
+#else
+        string store = GameOfWhales.STORE_GOOGLEPLAY;
+#endif
+
+        GameOfWhales.Init(store);
+    }
+
 	// Use this for initialization
 	void Start () {
         Debug.Log("FirebaseExample: Firebase Messaging Initializing");

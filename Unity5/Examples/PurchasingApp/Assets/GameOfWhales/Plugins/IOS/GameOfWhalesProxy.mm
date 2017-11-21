@@ -42,11 +42,15 @@ static NSString * gw_listenerName = nil;
 }
 
 
-- (void)didReceiveRemoteNotification:(NSDictionary*)notification;
+- (void)didReceiveRemoteNotification:(NSNotification*)notification;
 {
-    ///NSLog(@"PROXY didReceiveRemoteNotification %@", notification);
-    ///UIApplication * application = [UIApplication sharedApplication];
-    ///[[GW shared] receivedRemoteNotification:nil withApplication:application fetchCompletionHandler:nil];
+    NSLog(@"PROXY didReceiveRemoteNotification %@", notification);
+    
+    if (notification)
+    {
+        UIApplication * application = [UIApplication sharedApplication];    
+        [[GW shared] receivedRemoteNotification:[notification userInfo] withApplication:application fetchCompletionHandler:nil];
+    }
 }
 
 - (void)unitySendMethod:(NSString*)method param:(NSDictionary<NSString*, id>*)param{

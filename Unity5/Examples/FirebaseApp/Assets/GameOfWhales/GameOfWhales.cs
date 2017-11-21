@@ -2,6 +2,10 @@
 using UnityEngine;
 using JsonUtils = GameOfWhalesJson.MiniJSON;
 
+#if UNITY_PURCHASING && UNITY_5_6_OR_NEWER
+using UnityEngine.Purchasing;
+#endif
+
 #if UNITY_EDITOR
 using GameOfWhalesType = GameOfWhalesEditor;
 #elif UNITY_ANDROID
@@ -12,10 +16,11 @@ using GameOfWhalesType = GameOfWhalesIOS;
 using GameOfWhalesType = GameOfWhales;
 #endif
 
+//UNITY_IOS
 
 public class GameOfWhales : MonoBehaviour {
 
-    public const string VERSION = "2.0.6";
+    public const string VERSION = "2.0.9";
 
     private int maxErrorCount = 10;
     private int errorCount = 0;
@@ -27,6 +32,10 @@ public class GameOfWhales : MonoBehaviour {
     public const string VERIFY_STATE_LEGAL = "legal";
     public const string VERIFY_STATE_ILLEGAL = "illegal";
     public const string VERIFY_STATE_UNDEFINED = "undefined";
+
+    public const string STORE_SAMSUNG = "SamsungApps";
+    public const string STORE_GOOGLEPLAY = "GooglePlay";
+    public const string STORE_APPLEAPPSTORE = "AppleAppStore";
 
     public delegate void OnSpecialOfferAppearedHandler(SpecialOffer offer);
     public delegate void OnSpecialOfferDisappearedHandler(SpecialOffer offer);
@@ -41,6 +50,7 @@ public class GameOfWhales : MonoBehaviour {
     public event OnSpecialOfferDisappearedHandler   OnSpecialOfferedDisappeared = delegate{};
 
     private readonly Dictionary<string, SpecialOffer> activeOffers = new Dictionary<string, SpecialOffer>();
+    protected static string store = "";
 
 	protected GameOfWhales() {}
 
@@ -157,8 +167,9 @@ public class GameOfWhales : MonoBehaviour {
     }
 
 
-    public static void Init()
+    public static void Init(string currentStore)
     {
+        GameOfWhales.store = currentStore;
         GameOfWhales instance = GameOfWhales.Instance;
     }
 
@@ -241,4 +252,35 @@ public class GameOfWhales : MonoBehaviour {
             ReportError(message, stacktrace);
         }
     }
+
+
+
+#if UNITY_PURCHASING && UNITY_5_6_OR_NEWER
+    public static string GetCurrentStore()
+    {
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            return STORE_APPLEAPPSTORE;
+        }
+        
+        var module = StandardPurchasingModule.Instance();
+
+        if (Application.platform == RuntimePlatform.Android && module.appStore == AppStore.GooglePlay)
+        {
+            return STORE_GOOGLEPLAY;
+        }  
+
+        if (Application.platform == RuntimePlatform.Android && module.appStore == AppStore.SamsungApps)
+        {
+            return STORE_SAMSUNG;
+        }
+
+        if (Application.platform == RuntimePlatform.Android && module.appStore == AppStore.AmazonAppStore)
+        {
+            //return STORE_AMAZON;
+        }
+
+        return "";
+    }
+#endif
 }
