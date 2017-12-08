@@ -10,6 +10,11 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**2.0.9**
+
+FIXED
+* bug with push notifications receiving (for iOS).
+
 **2.0.8**
 
 MODIFIED
