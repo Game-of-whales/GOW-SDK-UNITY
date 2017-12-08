@@ -36,12 +36,6 @@ public class GowPlayerInfo : MonoBehaviour {
         load();
         save();
         updateViews();
-
-        GameOfWhales.Instance.Converting(new Dictionary<string, int> {
-            {"coins", -1000},
-            {"gas", -50},
-            {"bike_1", 1}
-        }, "level_1");
     }
 
     public void load()

@@ -5,6 +5,9 @@
 //  Created by Denis Sachkov on 05.07.17.
 //  Copyright © 2017 GameOfWhales. All rights reserved.
 //
+#ifndef GWSpecialOffer_h
+#define GWSpecialOffer_h
+
 
 #import <Foundation/Foundation.h>
 
@@ -24,5 +27,5 @@
 -(bool)hasCountFactor;
 @end
 
-
+#endif
 

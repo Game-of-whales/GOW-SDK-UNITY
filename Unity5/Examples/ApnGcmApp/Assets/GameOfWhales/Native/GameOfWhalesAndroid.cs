@@ -46,7 +46,7 @@ public class GameOfWhalesAndroid : GameOfWhales {
 
 
 
-    public override void InAppPurchased(string sku, float price, string currency, string transactionID, string receipt) 
+    public override void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) 
     {
         if (checkInstance("InAppPurchased"))
         {
@@ -62,7 +62,7 @@ public class GameOfWhalesAndroid : GameOfWhales {
         }
     }
 
-    public override void Converting(IDictionary<string, int> resources, string place)
+    public override void Converting(IDictionary<string, long> resources, string place)
     {
         if (checkInstance("Converting"))
         {
@@ -78,7 +78,7 @@ public class GameOfWhalesAndroid : GameOfWhales {
         }
     }
 
-    public override void Consume(string currency, int number, string sink, int amount, string place)
+    public override void Consume(string currency, long number, string sink, long amount, string place)
     {
         Debug.Log("Consume");
         if (checkInstance("Consume"))
@@ -87,7 +87,7 @@ public class GameOfWhalesAndroid : GameOfWhales {
         }
     }
 
-    public override void Acquire(string currency, int amount, string source, int number, string place)
+    public override void Acquire(string currency, long amount, string source, long number, string place)
     {
         if (checkInstance("Acquire"))
         {
@@ -100,6 +100,14 @@ public class GameOfWhalesAndroid : GameOfWhales {
         if (checkInstance("ReportError"))
         {
             gameofwhales.Call("reportError", message, stacktrace);
+        }
+    }
+
+    public override void SetPushNotificationsEnable(bool value)
+    {
+        if (checkInstance("SetPushNotificationsEnable"))
+        {
+            gameofwhales.Call("setPushNotificationsEnable", value ? "true" : "false");
         }
     }
 

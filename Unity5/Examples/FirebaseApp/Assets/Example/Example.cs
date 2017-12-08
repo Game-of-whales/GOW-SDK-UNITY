@@ -41,7 +41,7 @@ public class Example : MonoBehaviour {
         this.campaignID.text = "Campaign: ";
     }
 
-    public void OnMessageReceived(string campID, string title, string message)
+    public void OnMessageReceived(SpecialOffer offer, string campID, string title, string message)
     {
         Clear();
         this.title.text = this.title.text + title;

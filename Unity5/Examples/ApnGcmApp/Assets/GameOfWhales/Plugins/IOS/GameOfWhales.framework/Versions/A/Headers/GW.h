@@ -3,6 +3,9 @@
 // Copyright (c) 2017 GameOfWhales. All rights reserved.
 //
 
+#ifndef GW_h
+#define GW_h
+
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 #import "GWDelegate.h"
@@ -21,62 +24,57 @@ FOUNDATION_EXPORT NSString *_Nonnull GW_VERSION;
 
 @interface GW : NSObject
 
-+ (nonnull instancetype)shared;
++ (BOOL) IsInitialized;
 
-+ (void)initializeWithGameKey : (nonnull NSString *)gameKey : (nullable NSDictionary *)launchOptions : (BOOL) debug;
++ (void)InitializeWithGameKey : (nonnull NSString *)gameKey : (nullable NSDictionary *)launchOptions : (BOOL) debug;
 
-+ (void)initialize : (nullable NSDictionary *)launchOptions : (BOOL) debug;
++ (void)Initialize : (nullable NSDictionary *)launchOptions : (BOOL) debug;
 
-- (void)setDebug:(BOOL)debug;
++ (void)SetDebug:(BOOL)debug;
 
-- (void)addDelegate:(nonnull id <GWDelegate>)delegate;
++ (void)AddDelegate:(nonnull id <GWDelegate>)delegate;
 
-- (void)removeDelegate:(nonnull id <GWDelegate>)delegate;
++ (void)RemoveDelegate:(nonnull id <GWDelegate>)delegate;
 
-- (nullable GWSpecialOffer *)specialOfferFor:(nonnull NSString *)productIdentifier;
++ (nullable GWSpecialOffer *)GetSpecialOffer:(nonnull NSString *)productID;
 
-- (BOOL)inSegment:(nonnull NSString *)segment;
++ (void)RegisterDeviceTokenWithData:(nonnull NSData *)deviceToken provider:(nonnull NSString *)provider;
 
-- (void)registerDeviceTokenWithData:(nonnull NSData *)deviceToken provider:(nonnull NSString *)provider;
++ (void)RegisterDeviceTokenWithString:(nonnull NSString *)deviceToken provider:(nonnull NSString *)provider;
 
-- (void)registerDeviceTokenWithString:(nonnull NSString *)deviceToken provider:(nonnull NSString *)provider;
++ (void)PurchaseTransaction:(nonnull SKPaymentTransaction *)transaction product:(nonnull SKProduct *)product;
 
-- (void)purchaseTransaction:(nonnull SKPaymentTransaction *)transaction product:(nonnull SKProduct *)product;
-
-- (void)converting:(nullable NSDictionary<NSString *, NSNumber*> *)resources
++ (void)Converting:(nullable NSDictionary<NSString *, NSNumber*> *)resources
              place:(nonnull NSString*)place;
 
-- (void)convertingWithString:(nonnull NSString*)resources
++ (void)ConvertingWithString:(nonnull NSString*)resources
              place:(nonnull NSString*)place;
 
++ (void)SetPushNotificationsEnable:(bool)value;
++ (bool)IsPushNotificationsEnabled;
 
-- (void)consumeCurrency:(nonnull NSString *)currency number:(nonnull NSNumber *)number sink:(nonnull NSString *)sink amount:(nonnull NSNumber*)amount place:(nonnull NSString*)place;
++ (void)ConsumeCurrency:(nonnull NSString *)currency number:(nonnull NSNumber *)number sink:(nonnull NSString *)sink amount:(nonnull NSNumber*)amount place:(nonnull NSString*)place;
 
-- (void)acquireCurrency:(nonnull NSString *)currency amount:(nonnull NSNumber *)amount source:(nonnull NSString *)source number:(nonnull NSNumber*)number place:(nonnull NSString*)place;
++ (void)AcquireCurrency:(nonnull NSString *)currency amount:(nonnull NSNumber *)amount source:(nonnull NSString *)source number:(nonnull NSNumber*)number place:(nonnull NSString*)place;
 
-- (nullable GWSpecialOffer*) getSpecialOffer:(nonnull NSString*)productID;
++ (void)Profile:(nullable NSDictionary<NSString *, id> *)params;
++ (void)ProfileWithString:(nonnull NSString*) params;
 
-- (void)profile:(nullable NSDictionary<NSString *, id> *)params;
-- (void)profileWithString:(nonnull NSString*) params;
++(void)ReportError:(nonnull NSString *)message :(nonnull NSString*) stacktrace;
 
-//(const char* sku, float price, const char* price, const char* currency, const char* transactionID, const char* receipt)
-
--(void)reportError:(nonnull NSString *)message :(nonnull NSString*) stacktrace;
-
--(void)inAppPurchased:(nonnull NSString*) sku :(float) price :(nonnull NSString*) currency :(nonnull NSString*) transactionID :(nonnull NSString*) receipt;
++(void)InAppPurchased:(nonnull NSString*) sku :(double) price :(nonnull NSString*) currency :(nonnull NSString*) transactionID :(nonnull NSString*) receipt;
 /*!
  @brief Method must be called from ApplicationDelegate::application:didReceiveRemoteNotification:fetchCompletionHandler: This method are processing remote notification from GameOfWhales when application is in background mode
  @param application UIApplication
  @param notification NSDictionary userData
  @param handler fetchCompletionHandler
  */
-- (void)receivedRemoteNotification:(nonnull NSDictionary *)notification withApplication:(UIApplication *_Nonnull)application fetchCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult result))handler;
++ (void)ReceivedRemoteNotification:(nonnull NSDictionary *)notification withApplication:(UIApplication *_Nonnull)application fetchCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult result))handler;
 
 /*!
 @brief send information that user reacted to push
 */
-- (void)reactedRemoteNotification:(nonnull NSDictionary *)notification;
-- (void)reactedRemoteNotificationWithCampaign:(nonnull NSString *)camp;
-
-//- (void)launchWithOptions:(nullable NSDictionary *)launchOptions;
++ (void)ReactedRemoteNotification:(nonnull NSDictionary *)notification;
++ (void)ReactedRemoteNotificationWithCampaign:(nonnull NSString *)camp;
 @end
+#endif

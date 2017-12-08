@@ -3,7 +3,11 @@
 // Copyright (c) 2017 GameOfWhales. All rights reserved.
 //
 
+#ifndef GWDelegate_h
+#define GWDelegate_h
+
 #import <Foundation/Foundation.h>
+#import "GWSpecialOffer.h"
 
 @class GWSpecialOffer;
 
@@ -12,7 +16,9 @@
 
 - (void)specialOfferDisappeared:(nonnull GWSpecialOffer *)specialOffer;
 
-- (void)onPushDelivered:(nonnull NSString *)camp title:(nonnull NSString*)title message:(nonnull NSString*)message;
+- (void)onPushDelivered:(nullable GWSpecialOffer*) offer camp:(nonnull NSString *)camp title:(nonnull NSString*)title message:(nonnull NSString*)message;
 
 - (void)onPurchaseVerified:(nonnull NSString*)transactionID state:(nonnull NSString*)state;
 @end
+
+#endif

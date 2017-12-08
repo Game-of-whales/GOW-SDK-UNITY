@@ -19,7 +19,7 @@ public class GameOfWhalesIOS : GameOfWhales {
     extern static private void gw_pushReacted(string camp);
 
     [System.Runtime.InteropServices.DllImport("__Internal")]
-    extern static private void gw_inAppPurchased(string sku, float price, string currency, string transactionID, string receipt);
+    extern static private void gw_inAppPurchased(string sku, double price, string currency, string transactionID, string receipt);
 
     [System.Runtime.InteropServices.DllImport("__Internal")]
     extern static private void gw_updateToken(string token, string provider);
@@ -31,10 +31,13 @@ public class GameOfWhalesIOS : GameOfWhales {
     extern static private void gw_converting(string resources, string place);
 
     [System.Runtime.InteropServices.DllImport("__Internal")]
-    extern static private void gw_consume(string currency, int number, string sink, int amount, string place);
+    extern static private void gw_consume(string currency, long number, string sink, long amount, string place);
 
     [System.Runtime.InteropServices.DllImport("__Internal")]
-    extern static private void gw_acquire(string currency, int amount, string source, int number, string place);
+    extern static private void gw_acquire(string currency, long amount, string source, long number, string place);
+
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    extern static private void gw_setPushNotificationsEnable(bool value);
 
 
     protected override void Initialize()
@@ -52,7 +55,7 @@ public class GameOfWhalesIOS : GameOfWhales {
         gw_pushReacted(camp);
     }
 
-    public override void InAppPurchased(string sku, float price, string currency, string transactionID, string receipt) 
+    public override void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) 
     {
         Debug.Log("GameOfWhalesIOS: InAppPurchased ");
         gw_inAppPurchased(sku, price, currency, transactionID, receipt);
@@ -64,7 +67,7 @@ public class GameOfWhalesIOS : GameOfWhales {
         gw_updateToken(token, provider);
     }
 
-    public override void Converting(IDictionary<string, int> resources, string place)
+    public override void Converting(IDictionary<string, long> resources, string place)
     {
         string paramsStr = JsonUtils.Serialize(resources);
         Debug.Log("GameOfWhalesIOS: Converting " + paramsStr);
@@ -78,18 +81,23 @@ public class GameOfWhalesIOS : GameOfWhales {
         gw_profile(paramsStr);
     }
 
-    public override void Consume(string currency, int number, string sink, int amount, string place)
+    public override void Consume(string currency, long number, string sink, long amount, string place)
     {
         Debug.Log("GameOfWhalesIOS: Consume ");
         gw_consume(currency, number, sink, amount, place);
     }
 
-    public override void Acquire(string currency, int amount, string source, int number, string place)
+    public override void Acquire(string currency, long amount, string source, long number, string place)
     {
         Debug.Log("GameOfWhalesIOS: Acquire ");
         gw_acquire(currency, amount, source, number, place);
     }
 
+    public override void SetPushNotificationsEnable(bool value)
+    {
+        Debug.Log("GameOfWhalesIOS: SetPushNotificationsEnable ");
+        gw_setPushNotificationsEnable(value);
+    }
 
     public override void RegisterForNotifications()
     {

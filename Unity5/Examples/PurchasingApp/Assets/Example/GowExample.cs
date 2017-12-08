@@ -26,7 +26,7 @@ public class GowExample : MonoBehaviour {
 		
 	}
 
-    void OnPushDelivired(string campID, string title, string message)
+    void OnPushDelivired(SpecialOffer offer, string campID, string title, string message)
     {
         dialog.Show(title, message, campID);
     }

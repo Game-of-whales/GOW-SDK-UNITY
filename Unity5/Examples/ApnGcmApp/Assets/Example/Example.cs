@@ -24,7 +24,7 @@ public class Example : MonoBehaviour {
         GameOfWhales.Instance.OnPushDelivered += OnPush;
     }
 
-    private void OnPush(string camp, string title, string message)
+    private void OnPush(SpecialOffer offer, string camp, string title, string message)
     {
         Clear();
 

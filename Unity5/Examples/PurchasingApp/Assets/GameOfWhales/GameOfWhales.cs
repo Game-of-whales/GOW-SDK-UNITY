@@ -20,7 +20,7 @@ using GameOfWhalesType = GameOfWhales;
 
 public class GameOfWhales : MonoBehaviour {
 
-    public const string VERSION = "2.0.9";
+    public const string VERSION = "2.0.10";
 
     private int maxErrorCount = 10;
     private int errorCount = 0;
@@ -41,7 +41,7 @@ public class GameOfWhales : MonoBehaviour {
     public delegate void OnSpecialOfferDisappearedHandler(SpecialOffer offer);
 
     public delegate void OnPurchaseVerifiedHandler(string transactionID, string state);
-    public delegate void OnPushDeliveredHandler(string camp, string title, string message);
+    public delegate void OnPushDeliveredHandler(SpecialOffer offer, string camp, string title, string message);
 
     public event OnPurchaseVerifiedHandler          OnPurchaseVerified = delegate{};
     public event OnPushDeliveredHandler             OnPushDelivered = delegate{};
@@ -61,7 +61,7 @@ public class GameOfWhales : MonoBehaviour {
         Debug.Log ("[GameOfWhales] " + funcName + " is not supported on this platform");
     }
         
-    public virtual void InAppPurchased(string sku, float price, string currency, string transactionID, string receipt) {
+    public virtual void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) {
         ErrMessage("InAppPurchased");
 	}
 
@@ -75,7 +75,7 @@ public class GameOfWhales : MonoBehaviour {
         ErrMessage("PushReacted");
     }
 
-    public virtual void Converting(IDictionary<string, int> resources, string place)
+    public virtual void Converting(IDictionary<string, long> resources, string place)
     {
         ErrMessage("Converting");
     }
@@ -85,12 +85,12 @@ public class GameOfWhales : MonoBehaviour {
         ErrMessage("Profile");
     }
 
-    public virtual void Consume(string currency, int number, string sink, int amount, string place)
+    public virtual void Consume(string currency, long number, string sink, long amount, string place)
     {
         ErrMessage("Consume");
     }
 
-    public virtual void Acquire(string currency, int amount, string source, int number, string place)
+    public virtual void Acquire(string currency, long amount, string source, long number, string place)
     {
         ErrMessage("Acquire");
     }
@@ -110,6 +110,11 @@ public class GameOfWhales : MonoBehaviour {
         SpecialOffer offer;
         activeOffers.TryGetValue(productID, out offer);
         return offer;
+    }
+
+    public virtual void SetPushNotificationsEnable(bool value)
+    {
+        ErrMessage("SetPushNotificationsEnable");
     }
 
     //Private methods * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -152,9 +157,16 @@ public class GameOfWhales : MonoBehaviour {
             camp = data["camp"] as string;
         }
 
+        SpecialOffer offer = null;
+        if (data.ContainsKey("offerProduct"))
+        {
+            var offerProduct = data["offerProduct"] as string;
+            offer = GetSpecialOffer(offerProduct);
+        }
+
         var title = data["title"] as string;
         var message = data["message"] as string;
-        OnPushDelivered.Invoke(camp, title, message);
+        OnPushDelivered.Invoke(offer, camp, title, message);
     }
 
     

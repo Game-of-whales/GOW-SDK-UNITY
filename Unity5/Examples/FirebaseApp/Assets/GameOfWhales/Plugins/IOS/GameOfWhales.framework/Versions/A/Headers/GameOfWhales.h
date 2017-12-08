@@ -5,6 +5,9 @@
 //  Created by Dmitry Burlakov on 26.09.16.
 //  Copyright © 2016 GameOfWhales. All rights reserved.
 //
+#ifndef GameOfWhales_h
+#define GameOfWhales_h
+
 
 #import <UIKit/UIKit.h>
 
@@ -18,3 +21,5 @@ FOUNDATION_EXPORT const unsigned char gowVersionString[];
 #import "GW.h"
 #import "GWSpecialOffer.h"
 #import "GWDelegate.h"
+
+#endif
