@@ -10,6 +10,16 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+
+**2.0.10**
+
+MODIFIED
+
+* Push notification about special offer comes at the same time with the special offer (new parameter _offer_ was added): <br/>
+``void onPushDelivered(SpecialOffer offer, String campID, String title, String message);``
+
+* ``SetPushNotificationsEnable`` method was added to allow user to turn off the push notifications.
+
 **2.0.9**
 
 FIXED
