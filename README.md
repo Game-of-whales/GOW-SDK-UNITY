@@ -11,6 +11,13 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.11**
+
+FIXED
+
+* parameters for ``acquire`` and ``consume`` methods for Android;
+* ``isExpired`` method that used local time instead of utc.
+
 **2.0.10**
 
 MODIFIED
