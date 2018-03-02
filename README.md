@@ -6,7 +6,7 @@ Game Of Whales Unity SDK.
 </p>
 
 Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki).
-> Currently, Unity SDK can only be used with Unity IAP Services
+
 
 Changelog
 ---------
