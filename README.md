@@ -10,6 +10,23 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+**2.0.13 (May 10, 2018)**
+
+ADDED
+
+* Custom data is supported for special offers.
+
+FIXED
+
+* Sometimes events from *Android* apps could not be sent to **Game of Whales** server.
+
+
+**2.0.12 (May 10, 2018)**
+
+ADDED
+
+* The information about device's locale is sent to **Game of Whales**.
+
 
 **2.0.11 (Jan 30, 2018)**
 
