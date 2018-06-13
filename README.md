@@ -10,6 +10,23 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 
 Changelog
 ---------
+
+
+**2.0.15 (Jun 13, 2018)**
+
+FIXED
+
+* Push notifications were not supported for Android 8 +.
+
+
+**2.0.14 (Jun 13, 2018)**
+
+ADDED
+
+* ```redeemable``` parameter was added to ```SpecialOffer``` class.
+
+
+
 **2.0.13.2 (May 14, 2018)**
 
 FIXED
