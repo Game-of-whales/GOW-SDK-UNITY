@@ -11,6 +11,13 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.16 (Jul 16, 2018)**
+
+ADDED
+
+* An option for generating of _Notification Service Extension_  extension (for iOS) was added. It allows to use push notifications with images on iOS devices. There are more details [in documentation](https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/SDK-implementation#step-12-rich-notifications-on-ios-devices-optional).
+The functionality works only with _Unity 2017_.
+
 
 **2.0.15 (Jun 13, 2018)**
 
