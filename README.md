@@ -11,6 +11,19 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.17 (Jul 25, 2018)**
+
+FIXED
+
+**iOS**
+
+* The error of calling of `consume`/`acquire` methods on some devices was fixed. 
+
+
+**Android**
+* Usage of `Store` parameter was fixed.
+
+
 **2.0.16 (Jul 16, 2018)**
 
 ADDED
