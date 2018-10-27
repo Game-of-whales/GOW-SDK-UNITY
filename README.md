@@ -11,6 +11,13 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.18 (Sep 04, 2018)**
+
+ADDED
+
+* ``GetServerTime`` method was added to get GOW server time.
+* Server time is used in special offers to check the time for the activation.
+
 **2.0.17 (Jul 25, 2018)**
 
 FIXED
