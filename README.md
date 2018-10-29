@@ -14,6 +14,7 @@ Changelog
 **2.0.19 (Oct 29, 2018)**
 
 FIXED
+
 **Android**:
 * Sometimes events (for example, ```pushDelivered```) were not sent to **GOW server**. The issue was fixed.
 
