@@ -11,6 +11,19 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.20 (Nov 20, 2018)**
+
+ADDED
+
+* The supporting of ads was added.
+
+FIXED
+
+**iOS**:
+
+* Names collisions with some plugins were fixed.
+
+
 **2.0.19 (Oct 29, 2018)**
 
 FIXED
