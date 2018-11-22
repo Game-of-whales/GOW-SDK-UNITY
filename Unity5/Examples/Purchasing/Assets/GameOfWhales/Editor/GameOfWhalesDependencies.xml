@@ -1,0 +1,18 @@
+<dependencies>
+    <androidPackages>
+
+        <!-- IF USE FIREBASE >
+    <androidPackage spec="com.google.firebase:firebase-iid:17.0.4">
+    </androidPackage>
+      <repositories>
+        <repository>Assets/Firebase/m2repository</repository>
+      </repositories-->
+
+        <androidPackage spec="com.google.android.gms:play-services-identity:11.0.1">
+        </androidPackage>
+        <repositories>
+            <repository>Assets/GameOfWhales/m2repository</repository>
+        </repositories>
+
+    </androidPackages>
+</dependencies>

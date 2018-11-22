@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "672610198143",
+    "firebase_url": "https://ios-native-plugin-test.firebaseio.com",
+    "project_id": "ios-native-plugin-test",
+    "storage_bucket": "ios-native-plugin-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672610198143:android:1d49adb83fd0e5c0",
+        "android_client_info": {
+          "package_name": "com.gameofwhales.gow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672610198143-7ps23ppvv844ts7fj8n3eep2aalse4mf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gameofwhales.gow",
+            "certificate_hash": "dc09fadaaeac5cee1a4964793f77dd5b31411541"
+          }
+        },
+        {
+          "client_id": "672610198143-m64o0po84vcsbnr6guaf5i3aj6jhf393.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtdHhx-P0mp3t6OCU7fxfeNoSUaSq8FLM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672610198143-941atjjufj8rfs7l36iboocv33phrquc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gameofwhales.native.ios"
+              }
+            },
+            {
+              "client_id": "672610198143-m64o0po84vcsbnr6guaf5i3aj6jhf393.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

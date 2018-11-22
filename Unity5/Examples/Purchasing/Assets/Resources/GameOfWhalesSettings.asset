@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc599496e37d5449194afaf4d72b29de, type: 3}
+  m_Name: GameOfWhalesSettings
+  m_EditorClassIdentifier: 
+  _notificationsEnabled: 1
+  _debugLogging: 1
+  _gameID: 58ff3e2e30bb6d070389ef0f
+  _androidProjectID: 672610198143
+  _generateNotificationService: 1
+  _nsebundlepostfix: nse
