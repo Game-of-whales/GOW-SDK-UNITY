@@ -15,7 +15,7 @@ Changelog
 
 ADDED
 
-* The supporting of ads was added.
+* The supporting of cross promotion ads was added.
 
 FIXED
 
