@@ -11,6 +11,29 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.21 (Dec 17, 2018)**
+
+MODIFIED
+
+* Calls by using `GameOfWhales.Instance` were changed to static methods.
+
+
+FIXED
+
+**Android**:
+* In some cases, the SDK sent events with the sdk’s platform _android_ instead of _unity_.
+* _GameOfWhalesDependencies.xml_ was fixed for working with _GCM_.
+* The handling of errors was improved.
+
+**iOS**:
+
+* The game didn’t pause when the cross-promotion ad was showing.
+* Ads bundle was not added to _XCODE_ project when using _NotificationServiceExtension_.
+* The selection of advertising (cross-promotion) images depending on the orientation of the device was fixed.
+* The repeating of cross-promotion ads after some minutes was fixed.
+* The handling of errors was improved.
+
+
 **2.0.20 (Nov 20, 2018)**
 
 ADDED
