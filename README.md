@@ -21,7 +21,7 @@ ADDED
 FIXED
 
 **iOS**:
-* The issue with getting server time on 32 bit devices was fixed.
+* The issue with getting server time on 32-bit devices was fixed.
 
 
 **2.0.21 (Dec 17, 2018)**
