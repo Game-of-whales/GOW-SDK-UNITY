@@ -11,6 +11,19 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.22 (Jan 25, 2019)**
+
+ADDED
+
+* The supporting of [future (anti-churn) special offers](https://www.gameofwhales.com/documentation/anti-churn-offers) were added.
+* The possibility of getting a profile's properties was added.
+
+FIXED
+
+**iOS**:
+* The issue with getting server time on 32 bit devices was fixed.
+
+
 **2.0.21 (Dec 17, 2018)**
 
 MODIFIED
