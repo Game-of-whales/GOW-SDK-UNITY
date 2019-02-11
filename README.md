@@ -11,6 +11,14 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.23 (Feb 11, 2019)**
+
+FIXED
+
+**Android**
+
+* Cross-promotion ads were shown incorrectly for a fixed portrait/landscape orientation.
+
 **2.0.22 (Jan 25, 2019)**
 
 ADDED
