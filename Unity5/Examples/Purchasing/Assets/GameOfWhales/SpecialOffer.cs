@@ -27,7 +27,7 @@ public class SpecialOffer{
     public bool IsExpired(){
         try
         {
-            return finishedAt.Ticks < GameOfWhales.Instance.GetServerTime().Ticks;
+            return finishedAt.Ticks < GameOfWhales.GetServerTime().Ticks;
         }
         catch (Exception e)
         {
@@ -47,7 +47,7 @@ public class SpecialOffer{
     public bool IsActivated() {
         try
         {
-            return activatedAt.Ticks < GameOfWhales.Instance.GetServerTime().Ticks;
+            return activatedAt.Ticks < GameOfWhales.GetServerTime().Ticks;
         }
         catch (Exception e)
         {

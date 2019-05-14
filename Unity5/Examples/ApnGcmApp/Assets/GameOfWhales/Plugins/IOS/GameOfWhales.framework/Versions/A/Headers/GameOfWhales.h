@@ -1,10 +1,14 @@
-//
-//  GameOfWhales.h
-//  GameOfWhales
-//
-//  Created by Dmitry Burlakov on 26.09.16.
-//  Copyright © 2016 GameOfWhales. All rights reserved.
-//
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-IOS/blob/master/LICENSE
+ *
+ */
+
 #ifndef GameOfWhales_h
 #define GameOfWhales_h
 

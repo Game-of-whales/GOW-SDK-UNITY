@@ -12,6 +12,8 @@
 #define GAME_OF_WHALES
 using System;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using JsonUtils = GameOfWhalesJson.MiniJSON;
 #if UNITY_PURCHASING && UNITY_5_6_OR_NEWER
@@ -19,6 +21,7 @@ using UnityEngine.Purchasing;
 #endif
 #if UNITY_EDITOR
 using GameOfWhalesType = GameOfWhalesEditor;
+// ReSharper disable MemberCanBePrivate.Global
 
 #elif UNITY_ANDROID
 using GameOfWhalesType = GameOfWhalesAndroid;
@@ -30,8 +33,9 @@ using GameOfWhalesType = GameOfWhales;
 
 //UNITY_IOS
 
-public class GameOfWhales : MonoBehaviour{
-    public const string VERSION = "2.0.20";
+public class GameOfWhales : MonoBehaviour
+{
+    public const string VERSION = "2.0.23";
 
     private int maxErrorCount = 10;
     private int errorCount = 0;
@@ -49,7 +53,9 @@ public class GameOfWhales : MonoBehaviour{
     public const string STORE_APPLEAPPSTORE = "AppleAppStore";
 
     public delegate void OnSpecialOfferAppearedHandler(SpecialOffer offer);
+
     public delegate void OnSpecialOfferDisappearedHandler(SpecialOffer offer);
+
     public delegate void OnFutureSpecialOfferAppearedHandler(SpecialOffer offer);
 
     public delegate void OnPurchaseVerifiedHandler(string transactionID, string state);
@@ -62,100 +68,283 @@ public class GameOfWhales : MonoBehaviour{
 
     public delegate void OnAdClosedHandler();
 
-    public event OnPurchaseVerifiedHandler OnPurchaseVerified = delegate{ };
-    public event OnPushDeliveredHandler OnPushDelivered = delegate{ };
+    public static event OnPurchaseVerifiedHandler OnPurchaseVerified = delegate { };
+    public static event OnPushDeliveredHandler OnPushDelivered = delegate { };
 
-    public event OnSpecialOfferAppearedHandler OnSpecialOfferAppeared = delegate{ };
-    public event OnSpecialOfferDisappearedHandler OnSpecialOfferedDisappeared = delegate{ };
-    public event OnFutureSpecialOfferAppearedHandler OnFutureSpecialOfferAppeared = delegate { };
+    public static event OnSpecialOfferAppearedHandler OnSpecialOfferAppeared = delegate { };
+    public static event OnSpecialOfferDisappearedHandler OnSpecialOfferedDisappeared = delegate { };
+    public static event OnFutureSpecialOfferAppearedHandler OnFutureSpecialOfferAppeared = delegate { };
 
-    public event OnAdLoadedHandler OnAdLoaded = delegate{ };
-    public event OnAdLoadFailedHandler OnAdLoadFailed = delegate{ };
-    public event OnAdClosedHandler OnAdClosed = delegate{ };
+    public static event OnAdLoadedHandler OnAdLoaded = delegate { };
+    public static event OnAdLoadFailedHandler OnAdLoadFailed = delegate { };
+    public static event OnAdClosedHandler OnAdClosed = delegate { };
 
     private readonly Dictionary<string, SpecialOffer> activeOffers = new Dictionary<string, SpecialOffer>();
     private readonly Dictionary<string, SpecialOffer> futureOffers = new Dictionary<string, SpecialOffer>();
     protected static string store = "";
 
-    protected readonly Dictionary<string, object> _emptyProperties = new Dictionary<string, object>();
+    protected static readonly Dictionary<string, object> _emptyProperties = new Dictionary<string, object>();
 
-    protected GameOfWhales(){ }
+    protected GameOfWhales()
+    {
+    }
 
-    protected virtual void Initialize(){ }
+    protected static bool CheckInstance(string from)
+    {
+        if (_instance == null)
+        {
+            Debug.LogError("GameOfWhales instance is null from: " + from);
+            return false;
+        }
 
-    private void ErrMessage(string funcName){
+        return true;
+    }
+
+    protected static void Initialize()
+    {
+        if (CheckInstance("Initialize"))
+        {
+            _instance._Initialize();
+        }
+    }
+    
+    protected virtual void _Initialize()
+    {
+    }
+
+    private void ErrMessage(string funcName)
+    {
         //Debug.Log ("[GameOfWhales] " + funcName + " is not supported on this platform");
     }
 
-    public virtual void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt){
+    public static void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) {
+        if (CheckInstance("InAppPurchased"))
+        {
+            _instance._InAppPurchased(sku, price, currency, transactionID, receipt);
+        }
+    }
+
+    protected virtual void _InAppPurchased(string sku, double price, string currency, string transactionID, string receipt){
         ErrMessage("InAppPurchased");
     }
 
-    public virtual void UpdateToken(string token, string provider){
+
+    public static void UpdateToken(string token, string provider)
+    {
+        if (CheckInstance("UpdateToken"))
+        {
+            _instance._UpdateToken(token, provider);
+        }
+    }
+    
+    protected virtual void _UpdateToken(string token, string provider){
         ErrMessage("UpdateToken");
     }
 
-    public virtual void PushReacted(string camp){
+
+    public static void PushReacted(string camp)
+    {
+        if (CheckInstance("PushReacted"))
+        {
+            _instance._PushReacted(camp);
+        }
+    }
+    
+    protected virtual void _PushReacted(string camp){
         ErrMessage("PushReacted");
     }
 
-    public virtual void Converting(IDictionary<string, long> resources, string place){
+    public static void Converting(IDictionary<string, long> resources, string place)
+    {
+        if (CheckInstance("Converting"))
+        {
+            _instance._Converting(resources, place);
+        }
+    }
+
+    protected virtual void _Converting(IDictionary<string, long> resources, string place) {
         ErrMessage("Converting");
     }
 
-    public virtual void Profile(IDictionary<string, object> parameters){
+
+    public static void Profile(IDictionary<string, object> parameters)
+    {
+        if (CheckInstance("Profile"))
+        {
+            _instance._Profile(parameters);
+        }
+    }
+
+    protected virtual void _Profile(IDictionary<string, object> parameters){
         ErrMessage("Profile");
     }
 
-    public virtual void Consume(string currency, long number, string sink, long amount, string place){
+
+    public static void Consume(string currency, long number, string sink, long amount, string place)
+    {
+        if (CheckInstance("Consume"))
+        {
+            _instance._Consume(currency, number, sink, amount, place);
+        }
+    }
+
+    protected virtual void _Consume(string currency, long number, string sink, long amount, string place){
         ErrMessage("Consume");
     }
 
-    public virtual void Acquire(string currency, long amount, string source, long number, string place){
+    public static void Acquire(string currency, long number, string sink, long amount, string place)
+    {
+        if (CheckInstance("Acquire"))
+        {
+            _instance._Acquire(currency, number, sink, amount, place);
+        }
+    }
+
+    protected virtual void _Acquire(string currency, long amount, string source, long number, string place){
         ErrMessage("Acquire");
     }
 
-    public virtual void RegisterForNotifications(){
+
+    public static void RegisterForNotifications()
+    {
+        if (CheckInstance("RegisterForNotifications"))
+        {
+            _instance._RegisterForNotifications();
+        }
+    }
+    
+    protected virtual void _RegisterForNotifications(){
         ErrMessage("RegisterForNotifications");
     }
 
-    public virtual void ReportError(string message, string stacktrace){
+
+
+    public static void ReportError(string message, string stacktrace)
+    {
+        if (CheckInstance("RegisterForNotifications"))
+        {
+            _instance._ReportError(message, stacktrace);
+        }
+    }
+    
+    protected virtual void _ReportError(string message, string stacktrace){
         ErrMessage("ReportError");
     }
 
-    public SpecialOffer GetSpecialOffer(string productID){
+
+    public static SpecialOffer GetSpecialOffer(string productID)
+    {
+        if (CheckInstance("GetSpecialOffer"))
+        {
+            return _instance._GetSpecialOffer(productID);
+        }
+
+        return null;
+    }
+
+    protected SpecialOffer _GetSpecialOffer(string productID){
         SpecialOffer offer;
         activeOffers.TryGetValue(productID, out offer);
         return offer;
     }
 
-    public virtual void SetPushNotificationsEnable(bool value){
+
+    public static void SetPushNotificationsEnable(bool value)
+    {
+        if (CheckInstance("SetPushNotificationsEnable"))
+        {
+            _instance._SetPushNotificationsEnable(value);
+        }
+    }
+    
+    protected virtual void _SetPushNotificationsEnable(bool value){
         ErrMessage("SetPushNotificationsEnable");
     }
 
-    public virtual System.DateTime GetServerTime(){
+
+    public static System.DateTime GetServerTime()
+    {
+        if (CheckInstance("GetServerTime"))
+        {
+            return _instance._GetServerTime();
+        }
+        
+        return System.DateTime.UtcNow;
+    }
+    
+    protected virtual System.DateTime _GetServerTime(){
         return System.DateTime.UtcNow;
     }
 
-    public virtual void LoadAd(){
+
+    public static void LoadAd()
+    {
+        if (CheckInstance("LoadAd"))
+        {
+            _instance._LoadAd();
+        }
+    }
+    
+
+    protected virtual void _LoadAd(){
         ErrMessage("LoadAd");
     }
 
-    public virtual bool IsAdLoaded(){
+
+    public static bool IsAdLoaded()
+    {
+        if (CheckInstance("IsAdLoaded"))
+        {
+            return _instance._IsAdLoaded();
+        }
+
+        return false;
+    }
+    
+    
+    protected virtual bool _IsAdLoaded(){
         return false;
     }
 
-    public virtual void ShowAd(){
+    public static void ShowAd()
+    {
+        if (CheckInstance("ShowAd"))
+        {
+            _instance._ShowAd();
+        }
+    }
+
+    protected virtual void _ShowAd(){
         ErrMessage("ShowAd");
     }
 
-    public virtual Dictionary<string, object> GetProperties()
+    public static Dictionary<string, object> GetProperties()
+    {
+        if (CheckInstance("GetProperties"))
+        {
+            return _instance._GetProperties();
+        }
+
+        return _emptyProperties;
+    }
+
+    protected virtual Dictionary<string, object> _GetProperties()
     {
         ErrMessage("GetProperties");
         return _emptyProperties;
     }
 
-    public string GetUserGroup()
+    public static string GetUserGroup()
+    {
+        if (CheckInstance("GetUserGroup"))
+        {
+            return _instance._GetUserGroup();
+        }
+
+        return "";
+    }
+
+    protected string _GetUserGroup()
     {
         try
         {
@@ -224,6 +413,7 @@ public class GameOfWhales : MonoBehaviour{
 
     private void Internal_OnSpecialOfferAppeared(string json){
         
+        Debug.Log("GameOfWhales::Internal_OnSpecialOfferAppeared: " + json);
         try
         {
             var offer = CreateSpecialOffer(json);
@@ -360,29 +550,37 @@ public class GameOfWhales : MonoBehaviour{
 
             lock (_lock){
                 if (_instance == null){
-                    _instance = (GameOfWhalesType) FindObjectOfType(typeof(GameOfWhalesType));
-
-                    if (FindObjectsOfType(typeof(GameOfWhalesType)).Length > 1){
-                        Debug.LogError("[Singleton] Something went really wrong " +
-                                       " - there should never be more than 1 singleton!" +
-                                       " Reopening the scene might fix it.");
-                        return _instance;
+                    try
+                    {
+                        _instance = (GameOfWhalesType) FindObjectOfType(typeof(GameOfWhalesType));
+    
+                        if (FindObjectsOfType(typeof(GameOfWhalesType)).Length > 1){
+                            Debug.LogError("[Singleton] Something went really wrong " +
+                                           " - there should never be more than 1 singleton!" +
+                                           " Reopening the scene might fix it.");
+                            return _instance;
+                        }
+    
+                        if (_instance == null){
+                            GameObject singleton = new GameObject();
+                            singleton.name = "(singleton) " + typeof(GameOfWhalesType).ToString();
+                            _instance = singleton.AddComponent<GameOfWhalesType>();
+                            
+                            Initialize();
+    
+                            DontDestroyOnLoad(singleton);
+    
+                            Debug.Log("[Singleton] An instance of " + typeof(GameOfWhalesType) +
+                                      " has been created with DontDestroyOnLoad.");
+                        }
+                        else{
+                            Debug.Log("[Singleton] Using instance already created: " +
+                                      _instance.gameObject.name);
+                        }
                     }
-
-                    if (_instance == null){
-                        GameObject singleton = new GameObject();
-                        singleton.name = "(singleton) " + typeof(GameOfWhalesType).ToString();
-                        _instance = singleton.AddComponent<GameOfWhalesType>();
-                        _instance.Initialize();
-
-                        DontDestroyOnLoad(singleton);
-
-                        Debug.Log("[Singleton] An instance of " + typeof(GameOfWhalesType) +
-                                  " has been created with DontDestroyOnLoad.");
-                    }
-                    else{
-                        Debug.Log("[Singleton] Using instance already created: " +
-                                  _instance.gameObject.name);
+                    catch (Exception e)
+                    {
+                        Debug.LogError(e.ToString());
                     }
                 }
 

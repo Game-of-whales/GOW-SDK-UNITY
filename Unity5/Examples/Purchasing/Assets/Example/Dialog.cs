@@ -39,7 +39,7 @@ public class Dialog : MonoBehaviour {
 #if GAME_OF_WHALES
     public void OnClickOK()
     {
-        GameOfWhales.Instance.PushReacted(campID);
+        GameOfWhales.PushReacted(campID);
         campID = "";
         Hide();
     }

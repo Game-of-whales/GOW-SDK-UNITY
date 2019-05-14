@@ -19,7 +19,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
 #if UNITY_ANDROID && !UNITY_EDITOR
 	private static AndroidJavaObject gameofwhales = null;
 
-	protected override void Initialize()
+	protected override void _Initialize()
 	{
         try
         {
@@ -64,7 +64,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         return false;
     }
 
-    public override void PushReacted(string camp)
+    protected override void _PushReacted(string camp)
     {   
         try
         {
@@ -81,7 +81,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
 
 
 
-    public override void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) 
+    protected override void _InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) 
     {
         try
         {
@@ -96,7 +96,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void UpdateToken(string token, string provider)
+    protected override void _UpdateToken(string token, string provider)
     {
         try
         {
@@ -111,7 +111,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void Converting(IDictionary<string, long> resources, string place)
+    protected override void _Converting(IDictionary<string, long> resources, string place)
     {
         try
         {
@@ -126,7 +126,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void Profile(IDictionary<string, object> parameters)
+    protected override void _Profile(IDictionary<string, object> parameters)
     {
         try
         {
@@ -141,7 +141,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void Consume(string currency, long number, string sink, long amount, string place)
+    protected override void _Consume(string currency, long number, string sink, long amount, string place)
     {
         try
         {
@@ -157,7 +157,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void Acquire(string currency, long amount, string source, long number, string place)
+    protected override void _Acquire(string currency, long amount, string source, long number, string place)
     {
         try
         {
@@ -172,7 +172,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void ReportError(string message, string stacktrace)
+    protected override void _ReportError(string message, string stacktrace)
     {
         try
         {
@@ -187,7 +187,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void SetPushNotificationsEnable(bool value)
+    protected override void _SetPushNotificationsEnable(bool value)
     {
         try
         {
@@ -202,12 +202,12 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override void RegisterForNotifications()
+    protected override void _RegisterForNotifications()
     {
 
     }
 
-    public override void ShowAd()
+    protected override void _ShowAd()
     {
         try
         {
@@ -222,7 +222,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-    public override bool IsAdLoaded()
+    protected override bool _IsAdLoaded()
     {
         try
         {
@@ -237,9 +237,11 @@ public class GameOfWhalesAndroid : GameOfWhales{
         {
             Debug.LogException(e, this);
         }
+        
+        return false;
     }
 
-    public override void LoadAd()
+    protected override void _LoadAd()
     {
         try
         {
@@ -254,7 +256,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         }
     }
 
-	public override System.DateTime GetServerTime()
+	protected override System.DateTime _GetServerTime()
 	{
         try
         {
@@ -276,7 +278,7 @@ public class GameOfWhalesAndroid : GameOfWhales{
         return System.DateTime.UtcNow;
 	}
 
-    public override Dictionary<string, object> GetProperties()
+    protected override Dictionary<string, object> _GetProperties()
     {
         try
         {

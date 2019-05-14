@@ -19,9 +19,9 @@ public class Example : MonoBehaviour {
 #endif
 
         GameOfWhales.Init(store);
-        GameOfWhales.Instance.RegisterForNotifications();
+        GameOfWhales.RegisterForNotifications();
 
-        GameOfWhales.Instance.OnPushDelivered += OnPush;
+        GameOfWhales.OnPushDelivered += OnPush;
     }
 
     private void OnPush(SpecialOffer offer, string camp, string title, string message)
@@ -32,7 +32,7 @@ public class Example : MonoBehaviour {
         message_text.text = message_text.text + message;
         campID_text.text = campID_text.text + camp;
 
-        GameOfWhales.Instance.PushReacted(camp);
+        GameOfWhales.PushReacted(camp);
     }
 
     public void Clear()

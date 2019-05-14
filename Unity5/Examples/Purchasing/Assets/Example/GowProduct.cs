@@ -15,8 +15,8 @@ public class GowProduct : MonoBehaviour {
     public void Start()
     {
 
-        GameOfWhales.Instance.OnSpecialOfferAppeared += OnOfferAppeared;
-        GameOfWhales.Instance.OnSpecialOfferedDisappeared += OnOfferDisappeared;
+        GameOfWhales.OnSpecialOfferAppeared += OnOfferAppeared;
+        GameOfWhales.OnSpecialOfferedDisappeared += OnOfferDisappeared;
     }
 
     public void update(string priceStr, string title)
@@ -26,7 +26,7 @@ public class GowProduct : MonoBehaviour {
     }
 
     void Update () {
-        SpecialOffer offer = GameOfWhales.Instance.GetSpecialOffer(id);
+        SpecialOffer offer = GameOfWhales.GetSpecialOffer(id);
 
         if (offer != null && offer.HasCountFactor())
         {

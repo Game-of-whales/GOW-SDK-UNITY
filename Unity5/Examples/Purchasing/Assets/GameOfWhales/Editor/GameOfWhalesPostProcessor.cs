@@ -32,87 +32,78 @@ public class GameOfWhalesPostProcessor{
     {
         if (buildTarget == BuildTarget.iOS)
         {
+	        
+	        
             GameOfWhalesSettings settings = GameOfWhalesSettings.instance;
-
+	        string projPath = Path.Combine(pathToBuiltProject, Path.Combine("Unity-iPhone.xcodeproj", "project.pbxproj"));
+	        
             string plistPath = Path.Combine(pathToBuiltProject, "Info.plist");
-            PlistDocument plist = new PlistDocument();
-            plist.ReadFromString(File.ReadAllText(plistPath));
 
-            PlistElementDict rootDict = plist.root;
-            string projPath =
- Path.Combine(pathToBuiltProject, Path.Combine("Unity-iPhone.xcodeproj",  "project.pbxproj"));
-
-
-            PBXProject project = new PBXProject();
-            project.ReadFromString(File.ReadAllText(projPath));
-
-            string targetGUID = project.TargetGuidByName("Unity-iPhone");
-            string projectString = project.WriteToString ();
+	        {
+		        PlistDocument plist = new PlistDocument();
+		        plist.ReadFromString(File.ReadAllText(plistPath));
+		        PlistElementDict rootDict = plist.root;
+		        
+		        PBXProject project = new PBXProject();
+		        project.ReadFromString(File.ReadAllText(projPath));
+		        string projectString = project.WriteToString();
 
 
 
-            if (settings.notificationsEnabled)
-            {
-                var buildKey = "UIBackgroundModes";
-                var backgroundModes = rootDict.CreateArray(buildKey);
-				backgroundModes.AddString ("fetch");
-                backgroundModes.AddString ("remote-notification");
-                File.WriteAllText(plistPath, plist.WriteToString());
+		        if (settings.notificationsEnabled)
+		        {
+			        var buildKey = "UIBackgroundModes";
+			        var backgroundModes = rootDict.CreateArray(buildKey);
+			        backgroundModes.AddString("fetch");
+			        backgroundModes.AddString("remote-notification");
+			        File.WriteAllText(plistPath, plist.WriteToString());
 
-                projectString =
- projectString.Replace ("SystemCapabilities = {\n", "SystemCapabilities = {\n\t\t\t\t\t\t\tcom.apple.Push = {\n\t\t\t\t\t\t\t\tenabled = 1;\n\t\t\t\t\t\t\t};");
-                File.WriteAllText(projPath, projectString);
-            }
+			        projectString =
+				        projectString.Replace("SystemCapabilities = {\n",
+					        "SystemCapabilities = {\n\t\t\t\t\t\t\tcom.apple.Push = {\n\t\t\t\t\t\t\t\tenabled = 1;\n\t\t\t\t\t\t\t};");
+			        File.WriteAllText(projPath, projectString);
+		        }
 
-            FileUtil.CopyFileOrDirectory("Assets/GameOfWhales/Plugins/IOS/GameOfWhalesBundle.bundle", pathToBuiltProject + "/GameOfWhalesBundle.bundle");
-            const string GOW_UID_REPLACE = "{GWUID}";
-            const string GOW_UID_FILE_REPLACE = "{GWUID_FILE}";
+	        }
+	        
+	        {
+		        PBXProject project = new PBXProject();
+		        project.ReadFromString(File.ReadAllText(projPath));
+		        string projectString = project.WriteToString();
+		        
+				FileUtil.CopyFileOrDirectory("Assets/GameOfWhales/Plugins/IOS/GameOfWhalesBundle.bundle", pathToBuiltProject + "/GameOfWhalesBundle.bundle");
+				const string GOW_UID_REPLACE = "{GWUID}";
+				const string GOW_UID_FILE_REPLACE = "{GWUID_FILE}";
+	
+				string GOW_BUNDLE_FILE_UID = GetUID(projectString);
+	
+				AddToPlistString(ref projectString, "/* CustomTemplate */ = {", "children = (\n", "\t\t\t\t{GWUID_FILE} /* GameOfWhalesBundle.bundle */,\n"
+					.Replace(GOW_UID_FILE_REPLACE, GOW_BUNDLE_FILE_UID));
+				
+				string GOW_BUNDLE_UID = GetUID(projectString);
+	
+	
+				AddToPlistString(ref projectString, "/* Begin PBXFileReference section */\n", "", "\t\t{GWUID_FILE} /* GameOfWhalesBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = \"wrapper.plug-in\"; path = GameOfWhalesBundle.bundle; sourceTree = \"<group>\"; };\n"
+					.Replace(GOW_UID_FILE_REPLACE, GOW_BUNDLE_FILE_UID));
+				AddToPlistString(ref projectString, "/* Begin PBXResourcesBuildPhase section */", "files = (\n", "\t\t\t\t{GWUID} /* GameOfWhalesBundle.bundle in Resources */,\n"
+					.Replace(GOW_UID_REPLACE, GOW_BUNDLE_UID));
+				AddToPlistString(ref projectString, "/* Begin PBXBuildFile section */\n", "", "\t\t{GWUID} /* GameOfWhalesBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = {GWUID_FILE} /* GameOfWhalesBundle.bundle */; };\n"
+					.Replace(GOW_UID_FILE_REPLACE, GOW_BUNDLE_FILE_UID)
+					.Replace(GOW_UID_REPLACE, GOW_BUNDLE_UID));
+				
+				File.WriteAllText(projPath, projectString);
+	        }
 
-            string GOW_BUNDLE_FILE_UID = GetUID(projectString);
-
-            AddToPlistString(ref projectString, "/* CustomTemplate */ = {", "children = (\n", "\t\t\t\t{GWUID_FILE} /* GameOfWhalesBundle.bundle */,\n"
-                .Replace(GOW_UID_FILE_REPLACE, GOW_BUNDLE_FILE_UID));
-            
-            string GOW_BUNDLE_UID = GetUID(projectString);
-
-
-            AddToPlistString(ref projectString, "/* Begin PBXFileReference section */\n", "", "\t\t{GWUID_FILE} /* GameOfWhalesBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = \"wrapper.plug-in\"; path = GameOfWhalesBundle.bundle; sourceTree = \"<group>\"; };\n"
-                .Replace(GOW_UID_FILE_REPLACE, GOW_BUNDLE_FILE_UID));
-            AddToPlistString(ref projectString, "/* Begin PBXResourcesBuildPhase section */", "files = (\n", "\t\t\t\t{GWUID} /* GameOfWhalesBundle.bundle in Resources */,\n"
-                .Replace(GOW_UID_REPLACE, GOW_BUNDLE_UID));
-            AddToPlistString(ref projectString, "/* Begin PBXBuildFile section */\n", "", "\t\t{GWUID} /* GameOfWhalesBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = {GWUID_FILE} /* GameOfWhalesBundle.bundle */; };\n"
-                .Replace(GOW_UID_FILE_REPLACE, GOW_BUNDLE_FILE_UID)
-                .Replace(GOW_UID_REPLACE, GOW_BUNDLE_UID));
-
-
-            //FILE = 92A6E7F7219C286700838F5D
-            //GWUID = 92A6E7F8219C286700838F5D
-            ///* CustomTemplate */ = {
-            /// children = (
-            /// 92A6E7F7219C286700838F5D /* GameOfWhalesBundle.bundle */,
-
-            ///* Begin PBXFileReference section */
-            //92A6E7F7219C286700838F5D /* GameOfWhalesBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GameOfWhalesBundle.bundle; sourceTree = "<group>"; };
-
-
-            ////* Begin PBXResourcesBuildPhase section */
-            /// files = (
-            /// 92A6E7F8219C286700838F5D /* GameOfWhalesBundle.bundle in Resources */,
-
-            ///* Begin PBXBuildFile section */
-            //92A6E7F8219C286700838F5D /* GameOfWhalesBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 92A6E7F7219C286700838F5D /* GameOfWhalesBundle.bundle */; };
-
-
-
-
-
-
-
-            File.WriteAllText(projPath, projectString);
-		
 #if UNITY_2017_1_OR_NEWER
 			if (settings.generateNotificationService)
 			{
+				PBXProject project = new PBXProject();
+				project.ReadFromString(File.ReadAllText(projPath));
+				string projectString = project.WriteToString();
+				PlistDocument plist = new PlistDocument();
+				plist.ReadFromString(File.ReadAllText(plistPath));
+				string targetGUID = project.TargetGuidByName("Unity-iPhone");
+				
 				Directory.CreateDirectory(pathToBuiltProject + "/NotificationService");
 				File.Copy("Assets/GameOfWhales/NotificationService/NotificationServiceh", pathToBuiltProject + "/NotificationService/NotificationService.h");
 				File.Copy("Assets/GameOfWhales/NotificationService/NotificationServicem", pathToBuiltProject + "/NotificationService/NotificationService.m");
@@ -139,6 +130,7 @@ public class GameOfWhalesPostProcessor{
 				plist.WriteToFile (plistPath);
 			}
 #endif
+	       
         }
     }
 
@@ -168,14 +160,27 @@ public class GameOfWhalesPostProcessor{
 
     private static void AddToPlistString(ref string str, string first, string second, string insert)
     {
+	    
         int startIndex = str.IndexOf(first);
+
+	    if (startIndex == 0)
+	    {
+		    Debug.LogError("GameOfWhales::AddToPlistString cannot find '" + first + "'");
+		    return;
+	    }
+	    
         int lenght = first.Length;
         if (second.Length > 0)
         {
             int secIndex = str.Substring(startIndex).IndexOf(second);
+	        
+	        if (startIndex == 0)
+	        {
+		        Debug.LogError("GameOfWhales::AddToPlistString cannot find '" + second + "' after '" + first + "'");
+		        return;
+	        }
             lenght = secIndex + second.Length;
         }
-
         str = str.Insert(startIndex + lenght, insert);
     }
 

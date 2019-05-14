@@ -237,6 +237,7 @@ FOUNDATION_EXPORT NSString *_Nonnull const GW_AD_CLICKED;
 
 +(void)Internal_onAdClosed;
 +(void)AdEvent:(NSString *)camp action:(NSString*)action;
++(void)ExtAdEvent:(NSString *)platform revenue:(NSNumber *)revenue type:(NSString*)type unitType:(NSString*)unitType;
 @end
 
 

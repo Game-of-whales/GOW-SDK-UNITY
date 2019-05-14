@@ -46,7 +46,7 @@ public class GowStoreListener : MonoBehaviour, IStoreListener{
 
         UnityPurchasing.Initialize(this, _configurationBuilder);
 #if GAME_OF_WHALES
-        GameOfWhales.Instance.OnPurchaseVerified += OnPurchaseVerified;
+        GameOfWhales.OnPurchaseVerified += OnPurchaseVerified;
 #endif
 
 	}
@@ -111,20 +111,20 @@ public class GowStoreListener : MonoBehaviour, IStoreListener{
 			int coins = p.coins;
 
 #if GAME_OF_WHALES
-			SpecialOffer offer = GameOfWhales.Instance.GetSpecialOffer(sku);
+			SpecialOffer offer = GameOfWhales.GetSpecialOffer(sku);
 			if (offer != null)
 				coins = (int)(coins * offer.countFactor);
 
 			player.incMoney(coins);
 
-			GameOfWhales.Instance.InAppPurchased(
+			GameOfWhales.InAppPurchased(
 				e.purchasedProduct.definition.id,
 				(float)e.purchasedProduct.metadata.localizedPrice,
 				e.purchasedProduct.metadata.isoCurrencyCode,
 				e.purchasedProduct.transactionID,
 				e.purchasedProduct.receipt);
 
-			GameOfWhales.Instance.Acquire("coins", coins, sku, 1, "bank");
+			GameOfWhales.Acquire("coins", coins, sku, 1, "bank");
 #endif
 		}
 

@@ -25,13 +25,13 @@ public class Example : MonoBehaviour {
 	void Start () {
         Debug.Log("FirebaseExample: Firebase Messaging Initializing");
         Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
-        GameOfWhales.Instance.OnPushDelivered += OnMessageReceived;
+        GameOfWhales.OnPushDelivered += OnMessageReceived;
         Firebase.Messaging.FirebaseMessaging.Subscribe("all");
 	}
 	
     public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) {
         Debug.Log("FirebaseExample: Received Registration Token: " + token.Token);
-        GameOfWhales.Instance.UpdateToken(token.Token, GameOfWhales.PROVIDER_FCM);
+        GameOfWhales.UpdateToken(token.Token, GameOfWhales.PROVIDER_FCM);
     }
 
     public void Clear()
@@ -48,6 +48,6 @@ public class Example : MonoBehaviour {
         this.messsage.text = this.messsage.text + message;
         this.campaignID.text = this.campaignID.text + campID;
 
-        GameOfWhales.Instance.PushReacted(campID);
+        GameOfWhales.PushReacted(campID);
     }
 }

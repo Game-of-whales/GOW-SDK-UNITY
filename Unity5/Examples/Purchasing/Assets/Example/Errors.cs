@@ -13,7 +13,7 @@ public class Errors : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         GowPageView.OnPageChangedEvent += OnPageChanged;
-        GameOfWhales.Instance.OnFutureSpecialOfferAppeared += OnFutureSpecialOfferAppeared;
+        GameOfWhales.OnFutureSpecialOfferAppeared += OnFutureSpecialOfferAppeared;
 
 
 	}
@@ -42,7 +42,7 @@ public class Errors : MonoBehaviour {
 
     void OnPageChanged()
     {
-        var props = GameOfWhales.Instance.GetProperties();
+        var props = GameOfWhales.GetProperties();
         properties.text = GameOfWhalesJson.MiniJSON.Serialize(props);
     }
 

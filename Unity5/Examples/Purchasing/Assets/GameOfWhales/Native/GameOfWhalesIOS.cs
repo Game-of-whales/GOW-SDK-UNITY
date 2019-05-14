@@ -66,7 +66,7 @@ public class GameOfWhalesIOS : GameOfWhales{
     extern static private void gw_showAd();
 
 
-    protected override void Initialize()
+    protected override void _Initialize()
     {
         try
         {
@@ -80,7 +80,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void PushReacted(string camp)
+    protected override void _PushReacted(string camp)
     { 
         try
         {
@@ -93,7 +93,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) 
+    protected override void _InAppPurchased(string sku, double price, string currency, string transactionID, string receipt) 
     {
         try
         {
@@ -106,7 +106,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void UpdateToken(string token, string provider)
+    protected override void _UpdateToken(string token, string provider)
     {
         try
         {
@@ -119,7 +119,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void Converting(IDictionary<string, long> resources, string place)
+    protected override void _Converting(IDictionary<string, long> resources, string place)
     {
         try
         {
@@ -133,7 +133,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void Profile(IDictionary<string, object> parameters)
+    protected override void _Profile(IDictionary<string, object> parameters)
     {
         try
         {
@@ -147,7 +147,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void Consume(string currency, long number, string sink, long amount, string place)
+    protected override void _Consume(string currency, long number, string sink, long amount, string place)
     {
         try
         {
@@ -159,7 +159,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void Acquire(string currency, long amount, string source, long number, string place)
+    protected override void _Acquire(string currency, long amount, string source, long number, string place)
     {
         try
         {
@@ -171,7 +171,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void ShowAd()
+    protected override void _ShowAd()
     {
         try
         {
@@ -183,7 +183,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override bool IsAdLoaded()
+    protected override bool _IsAdLoaded()
     {
         try
         {
@@ -197,7 +197,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         return false;
     }
 
-    public override void LoadAd()
+    protected override void _LoadAd()
     {
         try
         {
@@ -209,7 +209,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-    public override void SetPushNotificationsEnable(bool value)
+    protected override void _SetPushNotificationsEnable(bool value)
     {
         try
         {
@@ -222,17 +222,18 @@ public class GameOfWhalesIOS : GameOfWhales{
         }
     }
 
-	public override System.DateTime GetServerTime()
+	protected override System.DateTime _GetServerTime()
 	{
         try
         {
     		string st_str = gw_getServerTime();
-
+    
             if (st_str != null)
             {
         		System.DateTime dt = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         		long tt = Convert.ToInt64(st_str);
-        		return dt.AddMilliseconds(tt);
+                dt = dt.AddMilliseconds(tt);
+        		return dt;
             }
 
             return System.DateTime.Now;
@@ -245,7 +246,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         return System.DateTime.Now;
 	}
 
-    public override Dictionary<string, object> GetProperties()
+    protected override Dictionary<string, object> _GetProperties()
     {
         try
         {
@@ -269,7 +270,7 @@ public class GameOfWhalesIOS : GameOfWhales{
         return _emptyProperties;
     }
 
-    public override void RegisterForNotifications()
+    protected override void _RegisterForNotifications()
     {
         try
         {

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseApp", "Assembly-CSharp.csproj", "{01818D50-7199-40B3-7696-AA50EC5CA8FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{01818D50-7199-40B3-7696-AA50EC5CA8FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseApp", "Assembly-CSharp-Editor.csproj", "{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{4E3F7E8A-8409-1F8D-E47E-A61736FB7E4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

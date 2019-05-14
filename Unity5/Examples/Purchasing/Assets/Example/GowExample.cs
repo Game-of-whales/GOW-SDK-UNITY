@@ -22,14 +22,14 @@ public class GowExample : MonoBehaviour {
         //GameOfWhales Initialization, must be called before any call of sdk
 
 		GameOfWhales.Init(GameOfWhales.GetCurrentStore());
-        GameOfWhales.Instance.RegisterForNotifications();
-        GameOfWhales.Instance.OnPushDelivered += OnPushDelivired;
+        GameOfWhales.RegisterForNotifications();
+        GameOfWhales.OnPushDelivered += OnPushDelivired;
 
         ///Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
 	}
 
 	void Update () {
-		serverTimeText.text = GameOfWhales.Instance.GetServerTime().ToString();
+		serverTimeText.text = GameOfWhales.GetServerTime().ToString();
 	}
 
     void OnPushDelivired(SpecialOffer offer, string campID, string title, string message)
@@ -40,7 +40,7 @@ public class GowExample : MonoBehaviour {
     public void NotificationsEnableClicked()
     {
         notifications = !notifications;
-        GameOfWhales.Instance.SetPushNotificationsEnable(notifications);
+        GameOfWhales.SetPushNotificationsEnable(notifications);
 
         if (notifications)
         {
@@ -66,8 +66,8 @@ public class GowExample : MonoBehaviour {
 			string currency = RandomString (10);
 			string place = RandomString (10);
 			string product = RandomString (10);
-			GameOfWhales.Instance.Consume (currency, (long)(1), product, 1, place);
-			GameOfWhales.Instance.Acquire (currency, (long)(1), product, 1, place);
+			GameOfWhales.Consume (currency, (long)(1), product, 1, place);
+			GameOfWhales.Acquire (currency, (long)(1), product, 1, place);
 		}
 	}
 #endif

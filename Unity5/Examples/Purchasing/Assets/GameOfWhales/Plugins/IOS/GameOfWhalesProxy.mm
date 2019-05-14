@@ -245,13 +245,8 @@ static const char* gw_empty_string = "";
 }
 
 - (void)onAdClosed {
-    try
-    {
-        [self unitySendMethod:@"Internal_OnAdClosed"];
-    }
-    catch (...) {
-        NSLog(@"GameOfWhalesProxy:onAdClosed");
-    }
+    UnityPause(NO);
+    [self unitySendMethod:@"Internal_OnAdClosed"];
 }
 
 
@@ -424,12 +419,10 @@ extern "C" {
     
     void gw_showAd()
     {
-        try
+        if ([GW IsAdLoaded])
         {
+            UnityPause(YES);
             [GW ShowAd];
-        }
-        catch (...) {
-            NSLog(@"GameOfWhalesProxy:gw_showAd");
         }
     }
     
@@ -489,24 +482,24 @@ extern "C" {
     char * gw_getProperties()
     {
         try
-        {
-            NSMutableDictionary * dict = [GW GetProperties];
-            
-            NSString* data = nil;
-            if (dict){
-                NSError *error = nil;
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict
-                                                                   options:(NSJSONWritingOptions) NSJSONWritingPrettyPrinted                                                         error:&error];
-                if (error) {
-                    NSLog(@"gGameOfWhalesProxy::w_getProperties JSON error: %@", error.localizedDescription);
-                }
-                data = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                return gw_cStringCopy([data UTF8String]);
-            }
-        }
-        catch (...) {
-            NSLog(@"GameOfWhalesProxy:gw_getProperties");
-        }
+         {
+         NSMutableDictionary * dict = [GW GetProperties];
+         
+         NSString* data = nil;
+         if (dict){
+         NSError *error = nil;
+         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict
+         options:(NSJSONWritingOptions) NSJSONWritingPrettyPrinted                                                         error:&error];
+         if (error) {
+         NSLog(@"gGameOfWhalesProxy::w_getProperties JSON error: %@", error.localizedDescription);
+         }
+         data = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+         return gw_cStringCopy([data UTF8String]);
+         }
+         }
+         catch (...) {
+         NSLog(@"GameOfWhalesProxy:gw_getProperties");
+         }
         return NULL;
     }
     
@@ -515,9 +508,8 @@ extern "C" {
         try
         {
             NSDate * date = [GW GetServerTime];
-            long time = date.timeIntervalSince1970 * 1000;
-            NSString * nstime = [[NSNumber numberWithLong:time] stringValue];
-            return gw_cStringCopy([nstime UTF8String]);
+            NSNumber * time = [NSNumber numberWithDouble:date.timeIntervalSince1970 * 1000.0];
+            return gw_cStringCopy([[time stringValue] UTF8String]);
         }
         catch (...) {
             NSLog(@"GameOfWhalesProxy:gw_getServerTime");

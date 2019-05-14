@@ -9,9 +9,9 @@ public class Ads : MonoBehaviour {
 #if GAME_OF_WHALES
 	// Use this for initialization
 	void Start () {
-        GameOfWhales.Instance.OnAdClosed += OnAdClosed;
-        GameOfWhales.Instance.OnAdLoadFailed += OnAdLoadFailed;
-        GameOfWhales.Instance.OnAdLoaded += OnAdLoaded;
+        GameOfWhales.OnAdClosed += OnAdClosed;
+        GameOfWhales.OnAdLoadFailed += OnAdLoadFailed;
+        GameOfWhales.OnAdLoaded += OnAdLoaded;
 
         adstate.text = "hello";
 	}
@@ -24,21 +24,21 @@ public class Ads : MonoBehaviour {
     public void LoadAd()
     {
         adstate.text = "ad loading";
-        GameOfWhales.Instance.LoadAd();
+        GameOfWhales.LoadAd();
     }
 
 
     public void ShowAd()
     {
 		adstate.text = "ad showing";
-		if (GameOfWhales.Instance.IsAdLoaded())
+		if (GameOfWhales.IsAdLoaded())
 		{
-			GameOfWhales.Instance.ShowAd();
+			GameOfWhales.ShowAd();
 		}
 		else
 		{
 			adstate.text = "nothing to show, loading";
-			GameOfWhales.Instance.LoadAd();
+			GameOfWhales.LoadAd();
 		}
     }
 

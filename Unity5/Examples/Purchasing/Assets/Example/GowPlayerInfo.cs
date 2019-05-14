@@ -37,7 +37,7 @@ public class GowPlayerInfo : MonoBehaviour {
         save();
         updateViews();
 
-        GameOfWhales.Instance.Converting(new Dictionary<string, long> {
+        GameOfWhales.Converting(new Dictionary<string, long> {
             {"coins", -1000},
             {"gas", -50},
             {"bike_1", 1}
@@ -118,14 +118,14 @@ public class GowPlayerInfo : MonoBehaviour {
     {
         int cost = GetItemCost(id);
 
-        SpecialOffer offer = GameOfWhales.Instance.GetSpecialOffer(id);
+        SpecialOffer offer = GameOfWhales.GetSpecialOffer(id);
         if (offer != null)
             cost = (int)(cost * offer.priceFactor);
 
         if (canBuy(cost))
         {
             decMoney(cost);
-            GameOfWhales.Instance.Consume("coins", cost, id, 1, "shop");
+            GameOfWhales.Consume("coins", cost, id, 1, "shop");
         }
     }
 
@@ -148,7 +148,7 @@ public class GowPlayerInfo : MonoBehaviour {
 
     void updateViews()
     {
-        GameOfWhales.Instance.Profile(new Dictionary<string, object> {
+        GameOfWhales.Profile(new Dictionary<string, object> {
             {"coins", coins},
             {"class", userClass},
             {"gender", gender},
@@ -181,7 +181,7 @@ public class GowPlayerInfo : MonoBehaviour {
     {
         int cost = GetItemCost(itemID);
         string text = itemID;
-        SpecialOffer offer = GameOfWhales.Instance.GetSpecialOffer(itemID);
+        SpecialOffer offer = GameOfWhales.GetSpecialOffer(itemID);
         bool userOffer = offer != null && offer.HasPriceFactor();
         if (userOffer)
         {
