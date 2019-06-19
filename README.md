@@ -11,6 +11,14 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.24 (Jun 19, 2019)**
+
+ADDED
+
+* `onInitialized` callback was added. It should be used to get information that the SDK has been initialized.
+* `Purchase` method was added to register purchases without verification.
+
+
 **2.0.23 (Feb 11, 2019)**
 
 FIXED
