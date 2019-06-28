@@ -11,6 +11,18 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.26 (Jun 25, 2019)**
+
+ADDED
+* GDPR support: the non-personal mode was added. 
+
+FIXED
+
+**Android**
+
+* SDK receiver doesn't handle a push notification if it has handled the push notification with the same id before.
+
+
 **2.0.24 (Jun 19, 2019)**
 
 ADDED
