@@ -11,6 +11,15 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.27 (Jun 28, 2019)**
+
+FIXED
+
+**Android**
+
+* Purchase's price was multiplied 100 times. The bug was fixed.
+
+
 **2.0.26 (Jun 25, 2019)**
 
 ADDED
