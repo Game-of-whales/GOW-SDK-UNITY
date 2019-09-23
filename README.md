@@ -11,6 +11,14 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.29 (Sep 23, 2019)**
+
+ADDED
+
+* Supporting of ["A/B Testing"](https://www.gameofwhales.com/documentation/ab-testing) was added. 
+
+
+
 **2.0.27 (Jun 28, 2019)**
 
 FIXED
