@@ -11,6 +11,18 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.32 (Oct 22, 2019)**
+
+ADDED
+
+* [`OnConnected` callback](https://www.gameofwhales.com/documentation/integration#initialization) was added. 
+
+MODIFIED
+
+* `OnConnected` callback and `OnInitialized` callback are also called in _Unity_ editor.
+
+
+
 **2.0.29 (Sep 23, 2019)**
 
 ADDED
