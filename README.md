@@ -11,6 +11,17 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.33 (Dec 16, 2019)**
+
+ADDED
+
+* The information about the player's device is sent to **Game of Whales** server. 
+
+FIXED
+* The price converting was fixed for some rare cases.
+* Minor fixes.
+
+
 **2.0.32 (Oct 22, 2019)**
 
 ADDED
