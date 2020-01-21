@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1066091266328",
+    "firebase_url": "https://test-app-9529f.firebaseio.com",
+    "project_id": "test-app-9529f",
+    "storage_bucket": "test-app-9529f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066091266328:android:248843a96c997cec",
+        "android_client_info": {
+          "package_name": "com.gameofwhales.unity.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066091266328-pknlsuce3nnhlr8dujmpq6fp4qr25uer.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gameofwhales.unity.app",
+            "certificate_hash": "5a732b028317894ca9ed6c89160560d51b4d419c"
+          }
+        },
+        {
+          "client_id": "1066091266328-cs9al7u7lgs40r6tv09ambvpjcrtavvv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCqIak-sn2xkLBWXkU3sP6FvFmVq9peIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066091266328-cs9al7u7lgs40r6tv09ambvpjcrtavvv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1066091266328-1631h6rdfmba9ecoq2rm0t1t98gtpivg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gameofwhales.unity.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
