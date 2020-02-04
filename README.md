@@ -11,6 +11,22 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.36 (Feb 03, 2020)**
+
+ADDED
+
+**Android**
+
+* The tracking of _UTM_ parameters ( _install referrer_ ) was added.
+* A new dependency ( _com.android.installreferrer.installreferrer-1.1_ ) was added. Check, please, that it exists in "Plugins/Android" folder.  The dependency [can be added manually](https://github.com/Game-of-whales/GOW-SDK-UNITY/releases/download/2.0.36/com.android.installreferrer.installreferrer-1.1.aar) or by using _Play Service Resolver_.
+
+FIXED
+
+**Android**
+* The display of push notifications with long text was improved.
+
+
+
 **2.0.33 (Dec 16, 2019)**
 
 ADDED
