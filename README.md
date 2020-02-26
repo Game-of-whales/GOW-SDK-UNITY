@@ -11,6 +11,14 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.37 (Feb 26, 2020)**
+
+MODIFIED
+
+* _install referrer 1.1_ library was replaced to _install referrer 1.0_.
+
+
+
 **2.0.36 (Feb 03, 2020)**
 
 ADDED
