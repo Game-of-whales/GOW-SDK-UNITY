@@ -11,6 +11,13 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.38 (Mar 16, 2020)**
+
+FIXED
+
+* Converting of numbers was fixed for some localizations.
+
+
 **2.0.37 (Feb 26, 2020)**
 
 MODIFIED
