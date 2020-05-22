@@ -11,6 +11,15 @@ Documentation is in the [wiki](https://github.com/Game-of-whales/GOW-SDK-UNITY/w
 Changelog
 ---------
 
+**2.0.39 (May 22, 2020)**
+
+FIXED
+
+**Android**
+
+* Stability improvements.
+
+
 **2.0.38 (Mar 16, 2020)**
 
 FIXED
